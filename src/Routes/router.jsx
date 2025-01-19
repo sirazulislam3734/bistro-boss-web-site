@@ -16,10 +16,10 @@ import AddItems from "../pages/dashboard_admin/AddItems";
 import UpdateItem from "../pages/dashboard_admin/UpdateItem";
 import ManageBookings from "../pages/dashboard_admin/ManageBookings";
 import ManageItems from "../pages/dashboard_admin/ManageItems";
-import AdminHome from "../pages/dashboard_admin/AdminHome";
 import AdminRoute from "./AdminRoute";
 import PaymentHistory from "../pages/dashboard_user/PaymentHistory";
 import Payment from "../pages/dashboard_user/Payment";
+import AdminHome from "../pages/dashboard_admin/AdminHome";
 
 export const router = createBrowserRouter([
   {
@@ -106,3 +106,5 @@ export const router = createBrowserRouter([
     ]
   },
 ]);
+
+

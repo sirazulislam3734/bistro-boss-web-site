@@ -5,8 +5,10 @@ import { Link, NavLink } from "react-router-dom";
 import { GiShoppingCart } from "react-icons/gi";
 import { AuthContext } from "../provider/AuthProvider";
 import useCard from "../hooks/useCard";
+import useAdmin from "../hooks/useAdmin";
 
 const Navbar = () => {
+  const [isAdmin] = useAdmin();
   const [card] = useCard();
   const { user, signOutUser } = useContext(AuthContext);
   const navOption = (
@@ -17,9 +19,16 @@ const Navbar = () => {
       <li>
         <NavLink to="/contactUs">CONTACT US</NavLink>
       </li>
-      <li>
-        <NavLink to="/secret">SECRET</NavLink>
-      </li>
+      {user && isAdmin && (
+        <li>
+          <NavLink to="dashboard/adminHome">SECRET</NavLink>
+        </li>
+      )}
+      {user && !isAdmin && (
+        <li>
+          <NavLink to="dashboard/userHome">SECRET</NavLink>
+        </li>
+      )}
       <li>
         <NavLink to="/ourMenu">OUR MENU</NavLink>
       </li>
@@ -29,7 +38,7 @@ const Navbar = () => {
       <li>
         <NavLink to="/dashboard/card">
           <button className="lg:flex item-center gap-2">
-          <GiShoppingCart size={20} />
+            <GiShoppingCart size={20} />
             <div className="badge badge-secondary">+{card.length}</div>
           </button>
         </NavLink>
